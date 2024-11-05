@@ -7,7 +7,7 @@ public class Application {
         System.out.println("Я умею выполнять следующие функции:");
         System.out.println("1. Шифровать файл с помощью ключа.");
         System.out.println("2. Дешифровать файл с помощью ключа.");
-        System.out.println("3. Дешифровать методом перебора");
+        System.out.println("3. Дешифровать методом brute force.");
         System.out.println("4. Выход");
 
         Scanner console = new Scanner(System.in);

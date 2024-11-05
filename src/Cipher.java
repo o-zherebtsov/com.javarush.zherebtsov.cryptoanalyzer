@@ -33,8 +33,6 @@ public class Cipher {
             }
             bw.close();
             br.close();
-
-
         } catch (Exception e) {
         }
     }
@@ -60,7 +58,6 @@ public class Cipher {
             }
             bw.close();
             br.close();
-
         } catch (Exception e) {
         }
     }
@@ -71,12 +68,10 @@ public class Cipher {
         char a;
 
         try {
-
             for (int j = 0; j < ALPHABET.size(); j++) {
 
                 FileReader fr = new FileReader(str2);
                 BufferedReader br = new BufferedReader(fr);
-
                 FileWriter fw = new FileWriter(strOut2 + j + ".txt");
                 BufferedWriter bw = new BufferedWriter(fw);
 
@@ -91,7 +86,6 @@ public class Cipher {
                 br.close();
                 bw.close();
             }
-
         } catch (Exception e) {
         }
     }
