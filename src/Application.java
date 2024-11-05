@@ -9,24 +9,49 @@ public class Application {
         System.out.println("2. Дешифровать файл с помощью ключа.");
         System.out.println("3. Дешифровать методом перебора");
         System.out.println("4. Выход");
-        System.out.println("Введите номер функции которую хотите, чтобы я выполнил.");
 
         Scanner console = new Scanner(System.in);
 
-        switch (console.nextLine()) {
-            case "1":
-                System.out.println("Укажите путь к файлу который необходимо зашифровать.");
-                String str = console.nextLine();
+        int selection;
 
-                System.out.println("Укажите ключ шифрования.");
-                int key = console.nextInt();
+        do {
+            System.out.println("Введите номер функции которую хотите, чтобы я выполнил.");
+            selection = console.nextInt();
+            switch (selection) {
+                case 1:
+                    System.out.println("Укажите путь к файлу который необходимо зашифровать.");
+                    String str = console.next();
 
-                System.out.println("Укажите путь куда сохранить зашифрованный файл.");
-                String strFinal = console.nextLine();
+                    System.out.println("Укажите ключ шифрования.");
+                    int key = console.nextInt();
 
+                    System.out.println("Укажите путь куда сохранить зашифрованный файл.");
+                    String strOut = console.next();
 
-        }
+                    Cipher.Encrypt(str, key, strOut);
+                    break;
 
+                case 2:
+                    System.out.println("Укажите путь к файлу который необходимо расшифровать.");
+                    String str1 = console.next();
+
+                    System.out.println("Укажите ключ дешифрования.");
+                    int key1 = console.nextInt();
+
+                    System.out.println("Укажите путь куда сохранить расшифрованный файл.");
+                    String strOut1 = console.next();
+
+                    Cipher.Decrypt(str1, key1, strOut1);
+                    break;
+
+                case 3:
+
+                case 4:
+                    System.out.println("Спасибо что воспользовались программой шифрования!");
+                    break;
+
+            }
+        } while (selection != 4);
 
     }
 }
