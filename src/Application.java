@@ -45,6 +45,14 @@ public class Application {
                     break;
 
                 case 3:
+                    System.out.println("Укажите путь к файлу который необходимо расшифровать методом brute force.");
+                    String str2 = console.next();
+
+                    System.out.println("Укажите путь куда сохранить варианты расшифрованных файлов.");
+                    String strOut2 = console.next();
+
+                    Cipher.BruteForce(str2, strOut2);
+                    break;
 
                 case 4:
                     System.out.println("Спасибо что воспользовались программой шифрования!");

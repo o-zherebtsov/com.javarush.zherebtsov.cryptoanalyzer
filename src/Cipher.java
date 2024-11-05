@@ -39,7 +39,7 @@ public class Cipher {
         }
     }
 
-    public static void Decrypt (String str, int key, String strOut) {
+    public static void Decrypt(String str, int key, String strOut) {
 
         char c;
         char a;
@@ -61,6 +61,36 @@ public class Cipher {
             bw.close();
             br.close();
 
+        } catch (Exception e) {
+        }
+    }
+
+    public static void BruteForce(String str2, String strOut2) {
+
+        char c;
+        char a;
+
+        try {
+
+            for (int j = 0; j < ALPHABET.size(); j++) {
+
+                FileReader fr = new FileReader(str2);
+                BufferedReader br = new BufferedReader(fr);
+
+                FileWriter fw = new FileWriter(strOut2 + j + ".txt");
+                BufferedWriter bw = new BufferedWriter(fw);
+
+                while (br.ready()) {
+                    c = (char) br.read();
+                    if (ALPHABET.contains(c)) {
+                        int i = (ALPHABET.indexOf(c) + j) % ALPHABET.size();
+                        a = (char) ALPHABET.get(i);
+                        bw.append(a);
+                    } else bw.append(c);
+                }
+                br.close();
+                bw.close();
+            }
 
         } catch (Exception e) {
         }
