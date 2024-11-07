@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,10 +13,11 @@ public class Cipher {
             'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'я', '.', ',', '«', '»',
             ':', '!', '?', ' ');
 
-    public static void Encrypt(String str, int key, String strOut) {
+    public static void encrypt(String str, int key, String strOut) {
 
         char c;
         char a;
+        Validate validate = new Validate();
 
         try {
             FileReader fr = new FileReader(str);
@@ -37,7 +39,7 @@ public class Cipher {
         }
     }
 
-    public static void Decrypt(String str, int key, String strOut) {
+    public static void decrypt(String str, int key, String strOut) {
 
         char c;
         char a;
@@ -62,7 +64,7 @@ public class Cipher {
         }
     }
 
-    public static void BruteForce(String str2, String strOut2) {
+    public static void bruteForce(String str2, String strOut2) {
 
         char c;
         char a;

@@ -1,7 +1,9 @@
+import java.io.FileNotFoundException;
+import java.nio.file.Path;
 import java.util.Scanner;
 
 public class Application {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
 
         System.out.println("Здравствуйте! Я программа Шифровальшик.");
         System.out.println("Я умею выполнять следующие функции:");
@@ -11,7 +13,7 @@ public class Application {
         System.out.println("4. Выход");
 
         Scanner console = new Scanner(System.in);
-
+        Validate validate = new Validate();
         int selection;
 
         do {
@@ -21,37 +23,49 @@ public class Application {
                 case 1:
                     System.out.println("Укажите путь к файлу который необходимо зашифровать.");
                     String str = console.next();
+                    if (!validate.fileExists(Path.of(str))) {
+                        System.exit(2);
+                    }
 
                     System.out.println("Укажите ключ шифрования.");
-                    int key = console.nextInt();
+                    int key = validate.keyInt();
 
                     System.out.println("Укажите путь куда сохранить зашифрованный файл.");
                     String strOut = console.next();
 
-                    Cipher.Encrypt(str, key, strOut);
+                    Cipher.encrypt(str, key, strOut);
+                    System.out.println("Файл зашифрован.");
                     break;
 
                 case 2:
                     System.out.println("Укажите путь к файлу который необходимо расшифровать.");
                     String str1 = console.next();
+                    if (!validate.fileExists(Path.of(str1))) {
+                        System.exit(2);
+                    }
 
                     System.out.println("Укажите ключ дешифрования.");
-                    int key1 = console.nextInt();
+                    int key1 = validate.keyInt();
 
                     System.out.println("Укажите путь куда сохранить расшифрованный файл.");
                     String strOut1 = console.next();
 
-                    Cipher.Decrypt(str1, key1, strOut1);
+                    Cipher.decrypt(str1, key1, strOut1);
+                    System.out.println("Файл дешифрован.");
                     break;
 
                 case 3:
                     System.out.println("Укажите путь к файлу который необходимо расшифровать методом brute force.");
                     String str2 = console.next();
+                    if (!validate.fileExists(Path.of(str2))) {
+                        System.exit(2);
+                    }
 
                     System.out.println("Укажите путь куда сохранить варианты расшифрованных файлов.");
                     String strOut2 = console.next();
 
-                    Cipher.BruteForce(str2, strOut2);
+                    Cipher.bruteForce(str2, strOut2);
+                    System.out.println("Дешифровка методом Brute Force выполнена.");
                     break;
 
                 case 4:
